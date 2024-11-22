@@ -3,23 +3,25 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/ArmorCode.git'
+                git(
+                    url: 'https://github.com/Kashishhhhh/ArmorCode.git',
+                    branch: 'main'
+                )
             }
         }
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build('hello-world-app')
+                    docker.build('hello-world-app') 
                 }
             }
         }
         stage('Run Docker Container') {
             steps {
                 script {
-                    sh 'docker run -d --name hello-world-container hello-world-app'
+                    sh 'docker run -d --name hello-world-container hello-world-app' 
                 }
             }
         }
     }
 }
-
